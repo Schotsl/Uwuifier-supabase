@@ -11,7 +11,7 @@ export async function fetchPlausible(metric: string) {
   const encodedMetric = encodeURIComponent(metric);
 
   const plausibleUrl =
-    `${plausibleHost}/api/v1/stats/breakdown?site_id=${plausibleDomain}&period=1mo&property=event:props:method&filters=event:name%3D%3D${encodedMetric}&metrics=events`;
+    `${plausibleHost}/api/v1/stats/breakdown?site_id=${plausibleDomain}&period=month&property=event:props:method&filters=event:name%3D%3D${encodedMetric}&metrics=events`;
 
   const plausibleResponse = await fetch(plausibleUrl, {
     headers: {
