@@ -1,0 +1,6 @@
+# Supabase
+.branches
+.temp
+
+# Env files
+.env.local
