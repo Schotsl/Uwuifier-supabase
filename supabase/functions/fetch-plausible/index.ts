@@ -35,6 +35,23 @@ serve(async (req: Request) => {
       promiseUwuified,
     ]);
 
+    // If we call a unneeded update the websocket will trigger so we need to check if the data has changed
+    const { data: existingStats, error } = await supabaseClient
+      .from("statistics")
+      .select("*")
+      .eq("id", "4e2e6f56-b4dc-4a38-9bf7-5d3c59321890")
+      .single();
+
+    if (
+      existingStats &&
+      existingStats.spoke_sentence === sentenceSpoke &&
+      existingStats.copied_sentence === sentenceCopied &&
+      existingStats.shared_sentence === sentenceShared &&
+      existingStats.uwuified_sentence === sentenceUwuified
+    ) {
+      return;
+    }
+
     await supabaseClient
       .from("statistics")
       .update({
