@@ -14,6 +14,9 @@ serve(async (req: Request) => {
     Deno.env.get("SUPABASE_ANON_KEY") ?? "",
     {
       global: { headers: { Authorization: req.headers.get("Authorization")! } },
+      auth: {
+        persistSession: false,
+      },
     },
   );
 
