@@ -21,20 +21,20 @@ serve(async (req: Request) => {
   );
 
   const updateStatistics = async () => {
-    const promiseSpoke = fetchPlausible("Spoke sentence");
-    const promiseCopied = fetchPlausible("Copied sentence");
-    const promiseShared = fetchPlausible("Shared sentence");
+    // const promiseSpoke = fetchPlausible("Spoke sentence");
+    // const promiseCopied = fetchPlausible("Copied sentence");
+    // const promiseShared = fetchPlausible("Shared sentence");
     const promiseUwuified = fetchPlausible("Uwuified sentence");
 
     const [
-      sentenceSpoke,
-      sentenceCopied,
-      sentenceShared,
+      // sentenceSpoke,
+      // sentenceCopied,
+      // sentenceShared,
       sentenceUwuified,
     ] = await Promise.all([
-      promiseSpoke,
-      promiseCopied,
-      promiseShared,
+      // promiseSpoke,
+      // promiseCopied,
+      // promiseShared,
       promiseUwuified,
     ]);
 
@@ -47,9 +47,9 @@ serve(async (req: Request) => {
 
     if (
       existingStats &&
-      existingStats.spoke_sentence === sentenceSpoke &&
-      existingStats.copied_sentence === sentenceCopied &&
-      existingStats.shared_sentence === sentenceShared &&
+      // existingStats.spoke_sentence === sentenceSpoke &&
+      // existingStats.copied_sentence === sentenceCopied &&
+      // existingStats.shared_sentence === sentenceShared &&
       existingStats.uwuified_sentence === sentenceUwuified
     ) {
       return;
@@ -58,9 +58,9 @@ serve(async (req: Request) => {
     await supabaseClient
       .from("statistics")
       .update({
-        spoke_sentence: sentenceSpoke,
-        copied_sentence: sentenceCopied,
-        shared_sentence: sentenceShared,
+        // spoke_sentence: sentenceSpoke,
+        // copied_sentence: sentenceCopied,
+        // shared_sentence: sentenceShared,
         uwuified_sentence: sentenceUwuified,
       })
       .eq("id", "4e2e6f56-b4dc-4a38-9bf7-5d3c59321890");
